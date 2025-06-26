@@ -96,6 +96,6 @@ Basicamente, a FSL não é executada diretamente, mas sim traduzida para C, que 
 ## 🏆 Equipe da "Rave" (Autores)
 
 * João Vitor Borges Godinho (joaov-godinho)
-* Julianna Orso ()
+* Julianna Orso (Ju-Orso)
 
 ---
