@@ -1,6 +1,4 @@
 # fsl_transpiler.py (com importação dos nós da AST)
-
-# <<-- ADICIONE ESTA LINHA DE IMPORTAÇÃO NO TOPO DO ARQUIVO -->>
 from fsl_parser import FunctionCallNode, ReturnNode
 
 class Transpiler:
@@ -18,7 +16,6 @@ class Transpiler:
         return c_type
 
     def translate_expression(self, expression_node):
-        # Se a expressão for uma chamada de função, traduza-a corretamente
         if isinstance(expression_node, FunctionCallNode):
             return self.translate_FunctionCallNode(expression_node, as_expression=True)
         return " ".join([token.value for token in expression_node.tokens])
@@ -41,7 +38,7 @@ class Transpiler:
         self.add_line("")
         for stmt in node.statements:
             self.translate_node(stmt)
-            self.add_line("") # Espaço entre as funções
+            self.add_line("")
 
     def translate_PrintNode(self, node):
         expression_c = self.translate_expression(node.expression)

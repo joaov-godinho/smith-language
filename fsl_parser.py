@@ -1,8 +1,6 @@
-# fsl_parser.py (VERSÃO FINALMENTE CORRIGIDA)
 from fsl_lexer import Token
 
 # --- ETAPA 1: DEFINIÇÃO DOS NÓS DA AST (Estruturas de Dados) ---
-# Esta parte está correta e não muda.
 class ASTNode: pass
 class ProgramNode(ASTNode):
     def __init__(self, statements): self.statements = statements
@@ -39,9 +37,7 @@ class ReturnNode(ASTNode):
         self.expression = expression
 
 
-# --- ETAPA 2: O PARSER MODIFICADO ---
-
-# Em fsl_parser.py, substitua sua classe Parser inteira por esta:
+# --- ETAPA 2: O PARSER ---
 
 class Parser:
     def __init__(self, tokens):

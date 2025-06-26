@@ -10,7 +10,7 @@ class Token:
     def __repr__(self):
         return f"Token({self.type}, '{self.value}', Ln {self.line}, Col {self.column})"
 
-# Definição dos tipos de tokens que sua linguagem terá
+# Definição dos tipos de tokens que a linguagem terá
 TOKEN_REGEX_RULES = [
     # Palavras-chave e Estruturas Principais
     ('INICIO_PROGRAMA', r'Eu juro vo sair cagando'),
@@ -39,7 +39,7 @@ TOKEN_REGEX_RULES = [
     ('NUMBER_LITERAL', r'\b\d+(\.\d*)?\b|\b\.\d+\b'), 
     ('STRING_LITERAL', r'"(?:\\.|[^"\\])*"'), 
 
-    # Identificadores (nomes de variáveis, funções)
+    # Identificadores
     ('IDENTIFIER', r'[a-zA-Z_][a-zA-Z0-9_]*'),
 
     ('COMMENT', r'//.*'),
@@ -64,7 +64,7 @@ TOKEN_REGEX_RULES = [
     ('OP_DIV', r'/'),
     ('OP_MOD', r'%'),
 
-    # Ignorar espaços em branco e comentários (simples por enquanto)
+    # Ignorar espaços em branco e comentários
     ('NEWLINE', r'\n'),
     ('SKIP', r'\s+'),
     ('MISMATCH', r'.'), 
@@ -76,7 +76,6 @@ def tokenize(code):
     line_start_pos = 0
     pos = 0
     while pos < len(code):
-        # --- LÓGICA DE IGNORAR ESPAÇOS ATUALIZADA ---
         # Pula todos os caracteres de whitespace, exceto a nova linha
         if code[pos] in ' \t\r\u00A0': # Espaço, Tab, Retorno de Carro, Espaço Não-Separável
             pos += 1
@@ -88,11 +87,9 @@ def tokenize(code):
             line_start_pos = pos + 1
             pos += 1
             continue
-        # --- FIM DA LÓGICA DE ESPAÇOS ---
 
         match = None
         for token_type, regex_pattern in TOKEN_REGEX_RULES:
-            # Não precisamos mais das regras SKIP ou NEWLINE aqui, pois já foram tratadas
             if token_type in ['SKIP', 'NEWLINE']:
                 continue
 
@@ -115,7 +112,6 @@ def tokenize(code):
 
         # Se, após pular os espaços, ainda não encontrar match, é um erro.
         if not match:
-            # A regra MISMATCH deve pegar isso
             mismatch_char = code[pos]
             tokens.append(Token('MISMATCH', mismatch_char, line_num, pos - line_start_pos + 1))
             pos += 1
