@@ -29,7 +29,7 @@ A FSL é uma linguagem de programação imperativa, onde as palavras-chave, tipo
 * **Outros "comandos" incluem:**
     * Tipos: `14` (int), `16` (float), `Smith` (char), `Red Bull?` (double), `Katrina` (void)
     * Loops (WIP): `5Km?` (while), `Rave, RAVE?!` (for)
-    * E muito mais pérolas sendo implementadas!
+    * Declaração e chamada de funções: `Minha arte` e `Da o cu`
 
 ## 🛠️ Como Essa Mágica Acontece? (Visão Técnica)
 
@@ -63,7 +63,8 @@ Basicamente, a FSL não é executada diretamente, mas sim traduzida para C, que 
     * Estruturas condicionais `IF` e `IF/ELSE` (`Debaixo da ponte?`, `Faz isso comigo não velho`, `Seu cu`).
 * ✅ Transpilador funcional para as estruturas acima, gerando código C equivalente.
 * ✅ Orquestração completa: O script `main.py` lê um arquivo `.fsl`, traduz, compila o C com GCC e executa o resultado.
-* 🚧 Em desenvolvimento: Loops `WHILE` (`5Km?`) e `FOR` (`Rave, RAVE?!`), declaração e chamada de funções (`Minha arte`).
+* ✅ Implementado: Loops `WHILE` (`5Km?`) e `FOR` (`Rave, RAVE?!`), declaração e chamada de funções (`Minha arte`).
+* ✅ Código completo em FSL para validação da linguagem.
 
 ## 🚀 Como Rodar essa "Obra de Arte"
 
@@ -87,11 +88,9 @@ Basicamente, a FSL não é executada diretamente, mas sim traduzida para C, que 
 
 ## 🔮 Próximos Passos e Ideias para o "PC Gusmão" Implementar
 
-* Implementar completamente os laços de repetição `WHILE` (`5Km?`) e `FOR` (`Rave, RAVE?!`).
-* Suporte completo à declaração e chamada de funções (`Minha arte`, `Da o cu NOME_FUNCAO()`).
-* Melhorar o sistema de tratamento de erros, com mensagens quem sabe... mais meméticas?
+* Melhorar o sistema de tratamento de erros, com mensagens mais meméticas.
 * Expandir o suporte a expressões aritméticas e lógicas complexas.
-* Criar uma documentação mais detalhada para a sintaxe da FSL (se é que isso é possível para algo tão caótico 😂).
+* Criar uma documentação mais detalhada para a sintaxe da FSL.
 * Testes, muitos testes! "Quebro meu braço, tá branco véi!" se não testar.
 
 ## 🏆 Equipe da "Rave" (Autores)

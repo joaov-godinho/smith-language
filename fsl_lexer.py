@@ -21,11 +21,12 @@ TOKEN_REGEX_RULES = [
     ('ELSE', r'Faz isso comigo não velho'),
     ('FIM_BLOCO_GENERICO', r'Seu cu'),
     ('WHILE', r'5Km\?'),
-    ('FOR', r'Rave, RAVE\?'),
+    ('FOR', r'Rave, RAVE\?!'),
     ('CONTINUE', r'Pega um incenso pra mim pelo amor de deus'),
     ('BREAK', r'Sai daê doido'),
     ('FUNC_DECL', r'Minha arte'),
     ('FUNC_CALL_PREFIX', r'Da o cu'),
+    ('RETURN', r'Achei'),
 
     # Tipos de Dados
     ('TIPO_CHAR', r'Smith'),
@@ -41,7 +42,15 @@ TOKEN_REGEX_RULES = [
     # Identificadores (nomes de variáveis, funções)
     ('IDENTIFIER', r'[a-zA-Z_][a-zA-Z0-9_]*'),
 
+    ('COMMENT', r'//.*'),
+
     # Operadores e Delimitadores
+    ('OP_IGUAL', r'=='),
+    ('OP_DIFERENTE', r'!='),
+    ('OP_MAIOR_IGUAL', r'>='),
+    ('OP_MENOR_IGUAL', r'<='),
+    ('OP_AND', r'&&'),
+    ('OP_OR', r'\|\|'),
     ('ASSIGN', r'='),
     ('LPAREN', r'\('),
     ('RPAREN', r'\)'),
@@ -49,21 +58,15 @@ TOKEN_REGEX_RULES = [
     ('COMMA', r','),
     ('OP_MAIOR', r'>'),
     ('OP_MENOR', r'<'),
-    ('OP_IGUAL', r'=='),
-    ('OP_MAIOR_IGUAL', r'>='),
-    ('OP_MENOR_IGUAL', r'<='),
-    ('OP_DIFERENTE', r'!='),
     ('OP_SOMA', r'\+'),
     ('OP_SUB', r'-'),
     ('OP_MUL', r'\*'),
     ('OP_DIV', r'/'),
-    ('OP_AND', r'&&'), 
-    ('OP_OR', r'\|\|'),
+    ('OP_MOD', r'%'),
 
     # Ignorar espaços em branco e comentários (simples por enquanto)
     ('NEWLINE', r'\n'),
-    ('SKIP', r'[ \t]+'),
-    ('COMMENT', r'//.*'),
+    ('SKIP', r'\s+'),
     ('MISMATCH', r'.'), 
 ]
 
@@ -73,53 +76,53 @@ def tokenize(code):
     line_start_pos = 0
     pos = 0
     while pos < len(code):
-        match = None
-        # Verifica nova linha para contagem e posição da coluna
+        # --- LÓGICA DE IGNORAR ESPAÇOS ATUALIZADA ---
+        # Pula todos os caracteres de whitespace, exceto a nova linha
+        if code[pos] in ' \t\r\u00A0': # Espaço, Tab, Retorno de Carro, Espaço Não-Separável
+            pos += 1
+            continue
+        
+        # Trata a nova linha para incrementar o contador de linha
         if code[pos] == '\n':
-            tokens.append(Token('NEWLINE', '\n', line_num, pos - line_start_pos + 1))
             line_num += 1
             line_start_pos = pos + 1
             pos += 1
             continue
+        # --- FIM DA LÓGICA DE ESPAÇOS ---
 
-        # Ignora espaços e tabs
-        if re.match(r'[ \t]+', code[pos]):
-            pos +=1
-            continue
-
-        # Ignora comentários
-        comment_match = re.match(r'//.*', code[pos:])
-        if comment_match:
-            comment_text = comment_match.group(0)
-            newline_in_comment = comment_text.find('\n')
-            if newline_in_comment != -1:
-                pos += newline_in_comment
-            else:
-                pos += len(comment_text)
-            continue
-
-
+        match = None
         for token_type, regex_pattern in TOKEN_REGEX_RULES:
+            # Não precisamos mais das regras SKIP ou NEWLINE aqui, pois já foram tratadas
+            if token_type in ['SKIP', 'NEWLINE']:
+                continue
+
             regex = re.compile(regex_pattern)
             m = regex.match(code, pos)
             if m:
                 value = m.group(0)
-                if token_type not in ['SKIP', 'COMMENT', 'NEWLINE']: 
-                    tokens.append(Token(token_type, value, line_num, pos - line_start_pos + 1))
-                match = True
+                
+                # Trata comentários
+                if token_type == 'COMMENT':
+                    pos = m.end(0)
+                    match = True
+                    break # Ignora o resto e vai para a próxima posição do código
+                
+                # Adiciona o token encontrado
+                tokens.append(Token(token_type, value, line_num, pos - line_start_pos + 1))
                 pos = m.end(0)
+                match = True
                 break
+
+        # Se, após pular os espaços, ainda não encontrar match, é um erro.
         if not match:
-            m_mismatch = re.match(r'.', code[pos])
-            if m_mismatch:
-                 tokens.append(Token('MISMATCH', m_mismatch.group(0), line_num, pos - line_start_pos + 1))
-                 pos = m_mismatch.end(0)
-            else:
-                raise RuntimeError(f"Caractere inesperado na linha {line_num} coluna {pos - line_start_pos + 1}: {code[pos]}")
+            # A regra MISMATCH deve pegar isso
+            mismatch_char = code[pos]
+            tokens.append(Token('MISMATCH', mismatch_char, line_num, pos - line_start_pos + 1))
+            pos += 1
 
 
     tokens.append(Token('EOF', '', line_num, pos - line_start_pos + 1))
-    return [t for t in tokens if t.type not in ['SKIP', 'COMMENT', 'NEWLINE']]
+    return tokens
 
 # Exemplo de uso (para testar o lexer isoladamente)
 if __name__ == '__main__':

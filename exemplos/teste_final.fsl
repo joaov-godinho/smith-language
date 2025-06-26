@@ -1,0 +1,41 @@
+// --- Minha Arte Suprema: Verificador de Números Primos ---
+// Esta função é a minha arte. Ela diz se um número é primo (retorna 1) ou não (retorna 0).
+Minha arte 14 eh_primo(14 n)
+    // Números menores que 2 não são primos, é óbvio velho.
+    Debaixo da ponte? (n < 2)
+        Achei 0; // Não é primo
+    Seu cu
+
+    // Vamos para uma rave pra ver se achamos divisores
+    14 i;
+    Rave, RAVE?! (i = 2; i < n; i = i + 1)
+        // Se o resto da divisão por i for 0, encontramos um divisor!
+        Debaixo da ponte? (n % i == 0)
+            Achei 0; // Não é primo, já podemos parar a rave.
+        Seu cu
+    Seu cu // Fim da Rave
+
+    // Se a rave acabou e não achamos nada, o número é primo! Achei!
+    Achei 1;
+Seu cu // Fim da Minha Arte
+
+
+// --- O Programa Principal: A Hora do Show ---
+// "Eu tenho quantos anos, gente?" Vamos testar os números de 1 a 20.
+Eu juro vo sair cagando
+    Que foi cabeleira? ("--- Verificando números primos de 1 a 20 ---\n");
+    14 numero_atual;
+
+    Rave, RAVE?! (numero_atual = 1; numero_atual <= 20; numero_atual = numero_atual + 1)
+        14 resultado;
+        resultado = Da o cu eh_primo(numero_atual); // "Da o cu" pra minha arte verificar
+
+        Debaixo da ponte? (resultado == 1)
+            Que foi cabeleira? ("O número %d é primo! É a minha arte!\n", numero_atual);
+        Faz isso comigo não velho
+            Que foi cabeleira? ("O número %d não é primo... faz isso comigo não vei...\n", numero_atual);
+        Seu cu
+    Seu cu // Fim da Rave principal
+
+    Que foi cabeleira? ("--- Teste finalizado! Quebro meu braço, tá branco vei! ---\n");
+Ta branco tiro na cabeça
