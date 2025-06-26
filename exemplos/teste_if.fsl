@@ -1,0 +1,16 @@
+Eu juro vo sair cagando
+    14 idade = 15;
+    Que foi cabeleira? ("Testando IF...\n");
+
+    Debaixo da ponte? (idade > 17)
+        Que foi cabeleira? ("Maior de idade (bloco IF)!\n");
+    Faz isso comigo não velho
+        Que foi cabeleira? ("Menor de idade (bloco ELSE)!\n");
+    Seu cu
+
+    idade = 10; // Testando atribuição
+
+    Debaixo da ponte? (idade == 10)
+        Que foi cabeleira? ("Agora a idade é 10! (IF sem ELSE)\n");
+    Seu cu
+Ta branco tiro na cabeça
