@@ -1,0 +1,32 @@
+# Felipe Smith Language (FSL) - Dependencies
+# Python 3.8+
+
+# ===== CORE DEPENDENCIES =====
+# Este projeto usa APENAS a biblioteca padrão do Python!
+# Não há dependências externas necessárias.
+
+# A FSL utiliza:
+# - re (regex) - módulo padrão para lexer
+# - subprocess - módulo padrão para invocar GCC
+# - os - módulo padrão para operações de sistema
+
+# ===== EXTERNAL REQUIREMENTS =====
+# GCC (GNU Compiler Collection) deve estar instalado no sistema
+# e disponível no PATH para compilar o código C gerado.
+
+# Instalação do GCC:
+# - Linux (Debian/Ubuntu): sudo apt-get install gcc
+# - macOS: xcode-select --install
+# - Windows: MinGW (http://www.mingw.org/) ou MSYS2 (https://www.msys2.org/)
+
+# ===== DEVELOPMENT DEPENDENCIES (OPTIONAL) =====
+# Apenas necessário se você quiser contribuir com testes
+
+pytest>=7.3.0
+pytest-cov>=4.0.0
+
+# ===== DOCUMENTATION (OPTIONAL) =====
+# Para gerar documentação do código
+
+# sphinx>=6.0.0
+# sphinx-rtd-theme>=1.2.0
