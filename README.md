@@ -2,100 +2,420 @@
 
 **Transformando o meme Felipe Smith em código executável! "COÉ PC???"**
 
+[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Compiler](https://img.shields.io/badge/Type-Transpiler-orange)](https://github.com/joaov-godinho/smith-language)
+[![Status](https://img.shields.io/badge/Status-Functional-success)](https://github.com/joaov-godinho/smith-language)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 ## 🚀 Por Trás do Código
 
-Inspirado no meme Felipe Smith e no já memético [birl-language](https://birl-language.github.io/), este projeto nasceu como uma forma divertida e (educativa) de explorar os conceitos da disciplina de Compiladores.
+Inspirado no meme **Felipe Smith** e no já memético [birl-language](https://birl-language.github.io/), este projeto nasceu como uma forma divertida e educativa de explorar os conceitos da disciplina de **Compiladores**.
 
-O objetivo? Pegar as frases de efeito, os momentos de angústia e as pérolas de sabedoria de Felipe Smith e transformá-los em uma linguagem de programação funcional. Sim, "ensinamos" o computador a entender  "Eu juro vo sair cagando" como o início de tudo!
+O objetivo? Pegar as frases de efeito, os momentos de angústia e as pérolas de sabedoria de Felipe Smith e transformá-los em uma linguagem de programação imperativa. Sim, "ensinamos" o computador a entender **"Eu juro vo sair cagando"** como o início de tudo!
+
+### 🎯 Aspectos Técnicos Relevantes
+
+- **Paradigma Funcional:** Pipeline puro de transformações (Source → Tokens → AST → C Code)
+- **Transpilador Completo:** Implementação full-stack de compilador
+- **Integração com GCC:** Orquestração automática de compilação e execução
+- **Zero Dependências Externas:** Apenas Python padrão + expressões regulares
+
+---
 
 ## 🗣️ O que é a Felipe Smith Language (FSL)?
 
-A FSL é uma linguagem de programação imperativa, onde as palavras-chave, tipos de dados, e estruturas de controle da linguagem C foram substituídas por frases que viralizaram no meme Felipe Smith.
+A FSL é uma **linguagem de programação imperativa**, onde as palavras-chave, tipos de dados e estruturas de controle da linguagem C foram substituídas por frases que viralizaram no meme Felipe Smith.
 
-**Alguns exemplos da sintaxe da FSL:**
+### 📝 Sintaxe da FSL
 
-* **Início do programa:** `Eu juro vo sair cagando`
-* **Fim do programa (com sucesso):** `Ta branco tiro na cabeça`
-* **Declarar um inteiro:** `14 minhaIdade;`
-* **Exibir algo na tela:** `Que foi cabeleira? ("Minha mensagem aqui!");`
-* **Estrutura condicional (IF/ELSE):**
-    ```fsl
-    Debaixo da ponte? (condicao)
-        // Código se verdadeiro
-    Faz isso comigo não velho // Equivale ao ELSE
-        // Código se falso
-    Seu cu // Fim do bloco IF ou ELSE
-    ```
-* **Outros "comandos" incluem:**
-    * Tipos: `14` (int), `16` (float), `Smith` (char), `Red Bull?` (double), `Katrina` (void)
-    * Loops (WIP): `5Km?` (while), `Rave, RAVE?!` (for)
-    * Declaração e chamada de funções: `Minha arte` e `Da o cu`
+#### Estrutura Básica
+
+```fsl
+Eu juro vo sair cagando
+    // Seu código aqui
+Ta branco tiro na cabeça
+```
+
+#### Tipos de Dados
+
+| FSL | C Equivalente | Exemplo |
+|-----|---------------|---------|
+| `14` | `int` | `14 idade;` |
+| `16` | `float` | `16 altura;` |
+| `Smith` | `char` | `Smith inicial;` |
+| `Red Bull?` | `double` | `Red Bull? pi;` |
+| `Katrina` | `void` | `Katrina` (função sem retorno) |
+
+#### Comandos Principais
+
+```fsl
+// Saída (printf)
+Que foi cabeleira? ("Olá, mundo!");
+
+// Entrada (scanf)
+Vixi vixi? ("%d", &idade);
+
+// Condicional IF
+Debaixo da ponte? (idade >= 18)
+    Que foi cabeleira? ("Maior de idade");
+Seu cu
+
+// Condicional IF/ELSE
+Debaixo da ponte? (nota >= 7)
+    Que foi cabeleira? ("Aprovado");
+Faz isso comigo não velho
+    Que foi cabeleira? ("Reprovado");
+Seu cu
+
+// Loop WHILE
+5Km? (contador < 10)
+    contador = contador + 1;
+Seu cu
+
+// Loop FOR
+Rave, RAVE?! (14 i = 0; i < 10; i = i + 1)
+    Que foi cabeleira? ("Iteration");
+Seu cu
+
+// Função
+Guarapari - Buzios calcularSoma (14 a, 14 b)
+    Da o cu (a + b);
+Seu cu
+
+// Chamada de função
+14 resultado;
+Minha arte calcularSoma(5, 3);
+```
+
+---
 
 ## 🛠️ Como Essa Mágica Acontece? (Visão Técnica)
 
-Por baixo de toda a zueira, existe um processo de compilação (ou melhor, transpilação) bem definido:
+Por baixo de toda a zueira, existe um **processo de compilação** bem definido seguindo o paradigma funcional:
 
-1.  **Linguagem de Implementação:** O "compilador" da FSL é inteiramente escrito em **Python 3**.
-2.  **Análise Léxica:** O código fonte escrito em FSL é lido e quebrado em uma sequência de "tokens". Cada token representa uma frase de meme ou um operador conhecido (ex: `Debaixo da ponte?` vira um token `T_IF`).
-3.  **Análise Sintática:** Os tokens são analisados para verificar se a sequência forma uma estrutura gramaticalmente válida na FSL. O resultado dessa análise é, conceitualmente, uma Árvore Sintática Abstrata (AST) que representa a lógica do programa.
-4.  **Transpilação para C:** A AST é percorrida e cada nó (representando uma instrução ou expressão FSL) é traduzido para seu equivalente em código **Linguagem C**. É aqui que "Guarapari - Buzios é minha arte" vira lógica de verdade!
-5.  **Compilação e Execução do Código C:**
-    * O código C gerado é salvo em um arquivo `.c`.
-    * Um compilador C padrão (como o **GCC**) é invocado automaticamente pelo script Python para compilar esse arquivo `.c` em um programa executável.
-    * Finalmente, o script Python executa esse programa compilado, e a saída do seu código FSL é exibida no console.
+### Pipeline de Compilação
 
-Basicamente, a FSL não é executada diretamente, mas sim traduzida para C, que então é compilado e executado – tudo de forma transparente para o usuário (depois de configurado, claro!).
+```
+┌──────────────────┐
+│  Código FSL      │  "Eu juro vo sair cagando..."
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│  Lexer (Puro)    │  Transforma em Tokens
+│  fsl_lexer.py    │  "EU_JURO_VO_SAIR_CAGANDO" → T_MAIN_START
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│  Parser (Puro)   │  Valida sintaxe e constrói AST
+│  fsl_parser.py   │  Sequência de tokens → Árvore Sintática
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ Transpiler (Puro)│  Gera código C equivalente
+│fsl_transpiler.py │  AST → Código C válido
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│  GCC (Externo)   │  Compila C → Executável
+│  subprocess      │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│   Execução       │  ./programa
+└──────────────────┘
+```
 
-## 💻 Tecnologias e Ferramentas Utilizadas
+### Análise de Cada Fase
 
-* **Python 3.x:** Linguagem principal para o desenvolvimento do tradutor FSL.
-    * Módulos Python notáveis: `re` (expressões regulares para o lexer), `subprocess` (para invocar o GCC e executar o código compilado), `os`.
-* **Linguagem C:** A linguagem alvo da nossa transpilação. O código FSL se transforma em código C funcional.
-* **GCC (GNU Compiler Collection):** Ou qualquer outro compilador C compatível, necessário para compilar o código C gerado e permitir a execução dos programas FSL.
+#### 1. **Análise Léxica** (`fsl_lexer.py`)
+Quebra o código fonte em **tokens** usando expressões regulares:
 
-## 🎯 Status Atual do Projeto (Exemplo - Atualize conforme o progresso!)
+```python
+# Função pura: String → List[Token]
+def tokenize(source_code: str) -> List[Token]:
+    patterns = {
+        r'Eu juro vo sair cagando': 'T_MAIN_START',
+        r'Debaixo da ponte\?': 'T_IF',
+        r'14': 'T_INT',
+        # ...
+    }
+    return [Token(type, value) for match in matches]
+```
 
-* ✅ Analisador Léxico capaz de reconhecer os principais "memes-comandos".
-* ✅ Analisador Sintático para estruturas básicas como:
-    * Início e Fim de programa.
-    * Declaração de tipos de dados básicos (`14`, `16`, `Smith`, `Red Bull?`, `Katrina`).
-    * Comando de escrita na tela (`Que foi cabeleira?`).
-    * Estruturas condicionais `IF` e `IF/ELSE` (`Debaixo da ponte?`, `Faz isso comigo não velho`, `Seu cu`).
-* ✅ Transpilador funcional para as estruturas acima, gerando código C equivalente.
-* ✅ Orquestração completa: O script `main.py` lê um arquivo `.fsl`, traduz, compila o C com GCC e executa o resultado.
-* ✅ Implementado: Loops `WHILE` (`5Km?`) e `FOR` (`Rave, RAVE?!`), declaração e chamada de funções (`Minha arte`).
-* ✅ Código completo em FSL para validação da linguagem.
+#### 2. **Análise Sintática** (`fsl_parser.py`)
+Valida a sequência de tokens e constrói uma **AST**:
 
-## 🚀 Como Rodar essa "Obra de Arte"
+```python
+# Função pura: List[Token] → AST
+def parse(tokens: List[Token]) -> AST:
+    ast = ASTNode('program')
+    # Valida estrutura gramatical
+    # Constrói árvore sintática abstrata
+    return ast
+```
 
-1.  **Pré-requisitos Indispensáveis (Favor não ignorar, "pelo amor de deus"):**
-    * **Python 3.x** instalado no seu sistema.
-    * Um **Compilador C (como o GCC)** instalado e configurado corretamente no PATH do seu sistema operacional. (Sem isso, o passo de compilar o C gerado vai falhar com "Compilador GCC não encontrado").
-2.  **Clone o Repositório:**
-    ```bash
-    git clone https://github.com/joaov-godinho/smith-language.git
-    cd smith-language
-    ```
-3.  **Execute o Script Principal:**
-    No terminal, dentro da pasta do projeto, rode:
-    ```bash
-    python main.py
-    ```
-4.  O script solicitará o caminho para um arquivo `.fsl`. Você pode:
-    * Digitar o caminho para seu próprio arquivo FSL.
-    * Apenas pressionar Enter para usar o arquivo de exemplo padrão (geralmente `exemplos/ola_felipe.fsl`).
-5.  Aprecie (ou depure) a mágica acontecendo!
+#### 3. **Transpilação** (`fsl_transpiler.py`)
+Percorre a AST e gera **código C**:
 
-## 🔮 Próximos Passos e Ideias para o "PC Gusmão" Implementar
+```python
+# Função pura: AST → String (código C)
+def transpile(ast: AST) -> str:
+    c_code = ""
+    for node in ast.traverse():
+        c_code += translate_node(node)  # Puro
+    return c_code
+```
 
-* Melhorar o sistema de tratamento de erros, com mensagens mais meméticas.
-* Expandir o suporte a expressões aritméticas e lógicas complexas.
-* Criar uma documentação mais detalhada para a sintaxe da FSL.
-* Testes, muitos testes! "Quebro meu braço, tá branco véi!" se não testar.
+#### 4. **Compilação e Execução** (`main.py`)
+**Único ponto com efeitos colaterais:**
 
-## 🏆 Equipe da "Rave" (Autores)
-
-* João Vitor Borges Godinho (joaov-godinho)
-* Julianna Orso (Ju-Orso)
+```python
+# Efeito colateral: I/O, execução externa
+def compile_and_run(c_code: str):
+    with open('output.c', 'w') as f:  # I/O
+        f.write(c_code)
+    
+    subprocess.run(['gcc', 'output.c', '-o', 'programa'])  # Externo
+    subprocess.run(['./programa'])  # Execução
+```
 
 ---
+
+## 🎯 Exemplo Completo
+
+### Código FSL
+
+```fsl
+Eu juro vo sair cagando
+    14 idade;
+    
+    Que foi cabeleira? ("Digite sua idade: ");
+    Vixi vixi? ("%d", &idade);
+    
+    Debaixo da ponte? (idade >= 18)
+        Que foi cabeleira? ("Você é maior de idade!
+");
+    Faz isso comigo não velho
+        Que foi cabeleira? ("Você é menor de idade!
+");
+    Seu cu
+Ta branco tiro na cabeça
+```
+
+### Código C Gerado
+
+```c
+#include <stdio.h>
+
+int main() {
+    int idade;
+    
+    printf("Digite sua idade: ");
+    scanf("%d", &idade);
+    
+    if (idade >= 18) {
+        printf("Você é maior de idade!\n");
+    } else {
+        printf("Você é menor de idade!\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+## 💻 Tecnologias Utilizadas
+
+| Componente | Tecnologia | Função |
+|------------|-----------|--------|
+| **Linguagem Principal** | Python 3.8+ | Implementação do transpilador |
+| **Lexer** | Módulo `re` (regex) | Tokenização |
+| **Parser** | Python puro | Análise sintática |
+| **Transpiler** | Python puro | Geração de código C |
+| **Compilador C** | GCC | Compilação do código gerado |
+| **Orquestração** | `subprocess` | Invocação de GCC e execução |
+
+### Paradigma Funcional Aplicado
+
+✅ **Separação de Efeitos:** I/O isolado em `main.py`  
+✅ **Funções Puras:** Lexer, Parser e Transpiler são determinísticos  
+✅ **Composição:** Pipeline de transformações encadeadas  
+✅ **Imutabilidade:** Tokens e AST são estruturas imutáveis  
+
+---
+
+## 🚀 Como Executar
+
+### 1. Pré-requisitos
+
+- **Python 3.8+** instalado
+- **GCC** (GNU Compiler Collection) instalado e no PATH
+
+**Instalação do GCC:**
+- **Linux:** `sudo apt-get install gcc` (Debian/Ubuntu)
+- **macOS:** `xcode-select --install`
+- **Windows:** [MinGW](http://www.mingw.org/) ou [MSYS2](https://www.msys2.org/)
+
+### 2. Clone o Repositório
+
+```bash
+git clone https://github.com/joaov-godinho/smith-language.git
+cd smith-language
+```
+
+### 3. Execute o Transpilador
+
+```bash
+python main.py
+```
+
+O script solicitará o caminho para um arquivo `.fsl`. Você pode:
+- Digitar o caminho do seu próprio arquivo
+- Pressionar **Enter** para usar o exemplo padrão em `exemplos/`
+
+### 4. Aprecie a Mágica! 🎉
+
+```
+$ python main.py
+Digite o caminho do arquivo FSL (ou Enter para exemplo): 
+
+[INFO] Lendo arquivo: exemplos/ola_felipe.fsl
+[INFO] Tokenização... ✓
+[INFO] Análise sintática... ✓
+[INFO] Transpilação para C... ✓
+[INFO] Compilando com GCC... ✓
+[INFO] Executando programa...
+
+--- OUTPUT ---
+COÉ PC??? O programa tá rodando!
+Maior de idade detectado!
+--------------
+```
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+smith-language/
+├── fsl_lexer.py          # Analisador léxico (String → Tokens)
+├── fsl_parser.py         # Analisador sintático (Tokens → AST)
+├── fsl_transpiler.py     # Gerador de código (AST → C)
+├── main.py               # Orquestrador principal
+├── exemplos/
+│   ├── ola_felipe.fsl    # Exemplo básico
+│   ├── loops.fsl         # Demonstração de loops
+│   └── funcoes.fsl       # Demonstração de funções
+├── README.md
+└── requirements.txt      # (vazio - sem dependências externas)
+```
+
+---
+
+## 🎯 Status Atual do Projeto
+
+### ✅ Implementado
+
+- ✅ Analisador Léxico completo
+- ✅ Analisador Sintático funcional
+- ✅ Transpilador para C
+- ✅ Suporte a tipos básicos (int, float, char, double, void)
+- ✅ Estruturas condicionais (IF, IF/ELSE)
+- ✅ Loops (WHILE, FOR)
+- ✅ Funções (declaração e chamada)
+- ✅ I/O (printf, scanf equivalentes)
+- ✅ Expressões aritméticas e lógicas
+- ✅ Orquestração completa (FSL → Executável)
+
+### 🔮 Roadmap Futuro
+
+- [ ] Mensagens de erro mais descritivas (com linha/coluna)
+- [ ] Suporte a arrays
+- [ ] Suporte a structs
+- [ ] Otimizações no código C gerado
+- [ ] REPL interativo
+- [ ] Extensão VSCode com syntax highlighting
+- [ ] Documentação completa da gramática (BNF)
+
+---
+
+## 🧪 Testes
+
+Rode os exemplos incluídos:
+
+```bash
+# Exemplo básico
+python main.py exemplos/ola_felipe.fsl
+
+# Loops
+python main.py exemplos/loops.fsl
+
+# Funções
+python main.py exemplos/funcoes.fsl
+```
+
+---
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Faça um fork do projeto
+2. Crie uma branch (`git checkout -b feature/NovoComando`)
+3. Commit suas mudanças (`git commit -m 'Adiciona novo comando FSL'`)
+4. Push para a branch (`git push origin feature/NovoComando`)
+5. Abra um Pull Request
+
+### Ideias de Contribuição
+
+- 📝 Adicionar novos comandos baseados em frases do Felipe Smith
+- 🐛 Corrigir bugs no parser
+- 📚 Melhorar documentação
+- 🎨 Criar syntax highlighting para editores
+- 🧪 Adicionar testes automatizados
+
+---
+
+## 🏆 Equipe da "Rave"
+
+- **João Vitor Borges Godinho** ([@joaov-godinho](https://github.com/joaov-godinho))
+- **Julianna Orso** ([@Ju-Orso](https://github.com/Ju-Orso))
+
+---
+
+## 📚 Referências
+
+- Aho, A. V., et al. (2006). *Compilers: Principles, Techniques, and Tools* (Dragon Book)
+- [Crafting Interpreters](https://craftinginterpreters.com/) - Robert Nystrom
+- [BIRL Language](https://birl-language.github.io/) - Inspiração
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## ✉️ Contato
+
+**João Vitor Godinho**  
+📧 joaovitor.godinho@outlook.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/joão-vb-godinho/)  
+💻 [GitHub](https://github.com/joaov-godinho)
+
+---
+
+<div align="center">
+
+**⭐ Se este projeto te fez rir E aprender sobre compiladores, dê uma estrela!**
+
+*"COÉ PC??? Programa compilado com sucesso!"* 🤪
+
+</div>
