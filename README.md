@@ -362,26 +362,6 @@ python main.py exemplos/funcoes.fsl
 
 ---
 
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Faça um fork do projeto
-2. Crie uma branch (`git checkout -b feature/NovoComando`)
-3. Commit suas mudanças (`git commit -m 'Adiciona novo comando FSL'`)
-4. Push para a branch (`git push origin feature/NovoComando`)
-5. Abra um Pull Request
-
-### Ideias de Contribuição
-
-- 📝 Adicionar novos comandos baseados em frases do Felipe Smith
-- 🐛 Corrigir bugs no parser
-- 📚 Melhorar documentação
-- 🎨 Criar syntax highlighting para editores
-- 🧪 Adicionar testes automatizados
-
----
-
 ## 🏆 Equipe da "Rave"
 
 - **João Vitor Borges Godinho** ([@joaov-godinho](https://github.com/joaov-godinho))
@@ -400,15 +380,6 @@ Contribuições são bem-vindas! Para contribuir:
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-## ✉️ Contato
-
-**João Vitor Godinho**  
-📧 joaovitor.godinho@outlook.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/joão-vb-godinho/)  
-💻 [GitHub](https://github.com/joaov-godinho)
 
 ---
 
